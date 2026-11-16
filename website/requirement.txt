@@ -1,0 +1,8 @@
+flask
+tensorflow
+skit-learn
+joblib
+numpy
+pillow
+shutil
+uuid

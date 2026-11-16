@@ -1,0 +1,45 @@
+{% extends 'layout.html' %}
+{% block content %}
+<div class="hero">
+    <p>AI-POWERED PEST DIAGNOSTICS</p>
+    <h1>RICE CROP PEST RECOGNITION</h1>
+    <!-- <a href="/detection" class="btn">TRY NOW</a> -->
+    <h4><i><strong>NOTE :</strong> This model is trained for only <strong>Rice Crop Pest Detection</strong>. If you upload other images it will give wrong result.</i></h4>
+
+</div>
+
+<div class="container">
+    <div class="upload-card">
+        <br>
+        <h3>Upload Image</h3>
+        <form id = "uploadForm" action="/" method="POST" enctype="multipart/form-data">
+            <input type="file" name="file" class="file-input" accept="image/*" required>
+            <br>
+            <button type="submit" id = 'submitBtn' class="btn">Analyze Now</button>
+        </form>
+    </div>
+
+    <div id="miniLoader" class="mini-loader">
+        <div class="mini-spinner"></div>
+        <span>Processing...</span>
+    </div>
+
+</div>
+
+<!-- uploaded image -->
+{% if image_url %}
+
+ <div class="result-container">
+        <div class = "result">
+            <h4>Prediction Result:</h4>
+            <h2>{{ prediction }}</h2>
+        </div>
+            <div class="prediction-img">
+                <img src="{{ url_for('static', filename=image_url) }}" class="original_image" alt="Uploaded Leaf">
+            </div>
+            
+        </div>
+
+{% endif %}
+
+{% endblock %}
